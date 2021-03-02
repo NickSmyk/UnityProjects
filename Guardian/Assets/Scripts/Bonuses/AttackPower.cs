@@ -12,5 +12,6 @@ public class AttackPower : MonoBehaviour {
 			return;
 		collision.GetComponent<Character>().IncreaseAttackDamageMultiplier(1);
 		Destroy(transform.gameObject);
+		GameControl.Notify(EnumMethods.GetDescription(Notifications.IncreasedAttackDamage));
 	}
 }

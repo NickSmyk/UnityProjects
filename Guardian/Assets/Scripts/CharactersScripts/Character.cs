@@ -115,10 +115,8 @@ public class Character : MonoBehaviour
 		UpdateHealthBar();
 		if (CurrentHealth <= 0) {
 			Die();
-			Debug.Log("Character has been slained!");
 			return;
 		}
-		Debug.Log("Character was damaged!");
 	}
 	public void Die() {
 		dirX = 0f;
@@ -162,18 +160,23 @@ public class Character : MonoBehaviour
 	public float GetCurrentHealth() {
 		return CurrentHealth;
 	}
+	public bool IsCharacterStationary() {
+		return dirX == 0;
+	}
 	#region Leveling
 	public void IncreaseTheStat(Stat statType) {
 		switch (statType) {
 			case Stat.AttackDamage:
 				AttackDamageStat++;
+				IncreaseAttackDamageMultiplier(10);
 				break;
 			case Stat.AttackSpeed:
 				AttackSpeedStat++;
 				transform.GetComponent<CharacterAttack>().IncreaseAttackSpeed(10);
 				break;
-			case Stat.Health:
+			case Stat.Life:
 				HealthStat++;
+				IncreaseHPMultiplier(8);
 				break;
 		}
 	}
@@ -183,7 +186,7 @@ public class Character : MonoBehaviour
 				return AttackDamageStat;
 			case Stat.AttackSpeed:
 				return AttackSpeedStat;
-			case Stat.Health:
+			case Stat.Life:
 				return HealthStat;
 			default: return -1;
 		}
@@ -194,7 +197,8 @@ public class Character : MonoBehaviour
 		Points ++;
 		CurrentLevel++;
 		LevelingMenu.UpdateLevelText(CurrentLevel);
-		LevelingMenu.UpdatePointsText(Points);
+		LevelingMenu.UpdatePoints(Points);
+		GameControl.Notify(EnumMethods.GetDescription(Notifications.LevelUp));
 	}
 	public void IncreaseLevel(int number) {
 		CurrentLevel+= number;
@@ -216,8 +220,3 @@ public class Character : MonoBehaviour
 	#endregion
 }
 
-public enum Stat {
-	AttackSpeed,
-	AttackDamage,
-	Health
-} 

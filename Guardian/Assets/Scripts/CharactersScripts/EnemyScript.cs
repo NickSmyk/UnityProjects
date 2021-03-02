@@ -28,8 +28,8 @@ public class EnemyScript : MonoBehaviour {
 		anim = GetComponent<Animator>();
 		localScale = transform.localScale;
 
-		HealthMultiplier = 1f;
-		DamageMultiplier = 1f;
+		//HealthMultiplier = 1f;
+		//DamageMultiplier = 1f;
 		CurrentHealth = EnemyBaseHealth * HealthMultiplier;
 		CurrentDamage = (BaseDamage + BaseDamage * BaseDamageMultiplier) * DamageMultiplier;
 
@@ -87,10 +87,10 @@ public class EnemyScript : MonoBehaviour {
 			Die();
 			GameControl.IncreaseScore(1);
 			GameControl.GrantExperience(ExperienceOnDeath);
-			Debug.Log("Enemy has been slained!");
+			//Debug.Log("Enemy has been slained!");
 			return;
 		}
-		Debug.Log("Enemy was damaged!");
+		//Debug.Log("Enemy was damaged!");
 	}
 	public void Die() {
 		IsDead = true;
@@ -125,4 +125,11 @@ public class EnemyScript : MonoBehaviour {
 	public bool IsEnemyDead() {
 		return IsDead;
 	}
+	public void SetHealthMultiplier(float multiplier) {
+		HealthMultiplier = multiplier;
+	}
+	public void SetDamageMultiplier(float multiplier) {
+		DamageMultiplier = multiplier;
+	}
+
 }

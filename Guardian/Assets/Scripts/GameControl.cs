@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class GameControl : MonoBehaviour
 {
+	public Transform Notification;
+	public Transform EventCanvas;
 
 	public Transform LevelingMenuButton;
 	private bool IsLevelingMenuButtonBlinking;
@@ -33,6 +35,8 @@ public class GameControl : MonoBehaviour
 	private bool wasSaved;
 	private bool isGameOver;
 
+	public static bool IsAttackSpeedMax;
+
 	// Start is called before the first frame update
 	void Start()
     {
@@ -45,6 +49,7 @@ public class GameControl : MonoBehaviour
 		LevelingButtonImage = LevelingMenuButton.GetComponent<Image>();
 		BlinkCD = StartBlinkCD;
 		//MainCharacter = gameObject.GetComponent<Character>();
+		IsAttackSpeedMax = false;
 	}
 
     // Update is called once per frame
@@ -73,6 +78,13 @@ public class GameControl : MonoBehaviour
 			BlinkCD -= Time.deltaTime;
 		}
 	}
+	public static void Notify(string message) {
+		Vector2 screenPoint = RectTransformUtility.WorldToScreenPoint(Camera.main, Instance.MainCharacter.transform.position);
+		Transform text = Instantiate(Instance.Notification, Instance.MainCharacter.transform.position, Instance.MainCharacter.transform.rotation);
+		text.GetComponent<Text>().text = message;
+		text.transform.SetParent(Instance.EventCanvas);
+		text.GetComponent<RectTransform>().anchoredPosition = screenPoint - Instance.EventCanvas.GetComponent<RectTransform>().sizeDelta / 2f;
+	}
 
 	private void GameIsOver() {
 		gameOver.SetActive(true);
@@ -87,7 +99,7 @@ public class GameControl : MonoBehaviour
 	}
 
 	public static void DropAnItem(Transform Object) {
-		int itemNumber = Random.Range(0, 4);
+		int itemNumber = Random.Range(1, 4);
 		switch (itemNumber) {
 			case 1:
 				SpawnItem(Instance.IncreaseHP, Object);

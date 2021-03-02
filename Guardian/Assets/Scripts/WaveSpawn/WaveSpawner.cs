@@ -19,10 +19,13 @@ public class WaveSpawner : MonoBehaviour {
 	private int CurrentLevel = 1;
 	private int NumberOfWaves = 2;
 	private int CurrentWave = 1;
+	private float EnemyHealthMultiplier;
+	private float EnemyDamageMultiplier;
 
 	private void Start() {
 		WaveCountdown = TimeBetweenWaves;
-
+		EnemyHealthMultiplier = 1f;
+		EnemyDamageMultiplier = 1f;
 	}
 
 	private void Update() {
@@ -70,24 +73,32 @@ public class WaveSpawner : MonoBehaviour {
 
 	void SpawnEnemy(Transform enemy, int enemyNumber) {
 		if(SpawnPoints.Length == 0) {
-			Debug.Log("No spawn points");
+			//Debug.Log("No spawn points");
 			return;
 		}
 		Transform sp = SpawnPoints[UnityEngine.Random.Range(0, SpawnPoints.Length)];
 		Vector3 postition = new Vector3(sp.position.x, (sp.position.y - UnityEngine.Random.Range(-0.7f, 0.7f)), sp.position.z);
 		enemy.GetComponent<Renderer>().sortingOrder = enemyNumber+3;
 		Instantiate(enemy, postition, sp.rotation);
-		Debug.Log("Enemy spawned");
+		//Debug.Log("Enemy spawned");
 	}
 	#endregion
 
 	void WaveComplited() {
 		if(CurrentLevel % 5 == 0) {
+			EnemyHealthMultiplier += 0.2f;
+			EnemyDamageMultiplier += 0.1f;
+			Wave.Enemy.GetComponent<EnemyScript>().SetDamageMultiplier(EnemyDamageMultiplier);
+			Wave.Enemy.GetComponent<EnemyScript>().SetHealthMultiplier(EnemyHealthMultiplier);
+			GameControl.Notify(EnumMethods.GetDescription(Notifications.EnemiesAreStronger));
 			Wave.Count -= 3;
 			NumberOfWaves++;
+			Debug.Log("Difficulty has been increased");
+
 		}
 		Wave.Count++;
 		CurrentLevel++;
+		Debug.Log("DifficultyLevel");
 
 	}
 

@@ -75,6 +75,8 @@
     <Compile Include="Assets\Scripts\Handlers\HealthBarScript.cs" />
     <Compile Include="Assets\Scripts\Bonuses\AttackPower.cs" />
     <Compile Include="Assets\Scripts\LevelingMenu.cs" />
+    <Compile Include="Assets\Scripts\Notification.cs" />
+    <Compile Include="Assets\Scripts\Enums.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\Knight Files\Read Me.txt" />

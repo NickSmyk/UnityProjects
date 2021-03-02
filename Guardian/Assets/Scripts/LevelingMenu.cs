@@ -14,8 +14,15 @@ public class LevelingMenu : MonoBehaviour
 
 
 	public TextMeshProUGUI AttackSpeedText;
+	public Transform AttackSpeedButton;
+	public TextMeshProUGUI AttackDamageText;
+	public Transform AttackDamageButton;
+	public TextMeshProUGUI MaximumLifeText;
+	public Transform MaximumLifeButton;
+
 	public TextMeshProUGUI LevelText;
 	public TextMeshProUGUI PointsText;
+
 
 	void Start()
     {
@@ -37,6 +44,21 @@ public class LevelingMenu : MonoBehaviour
 			UpdateStats();
 		}
 	}
+	public void IncreaseMaximumLife() {
+		if (Character.GetPoints() >= 1) {
+			Character.IncreaseTheStat(Stat.Life);
+			Character.DecreasePoints();
+			UpdateStats();
+		}
+	}
+	public void IncreaseAttackDamage() {
+		if (Character.GetPoints() >= 1) {
+			Character.IncreaseTheStat(Stat.AttackDamage);
+			Character.DecreasePoints();
+			UpdateStats();
+		}
+	}
+
 
 	public void OpenLvlingMenu() {
 		LvlingMenu.SetActive(true);
@@ -46,12 +68,35 @@ public class LevelingMenu : MonoBehaviour
 	}
 	public void UpdateStats() {
 		AttackSpeedText.text = Character.GetStat(Stat.AttackSpeed).ToString();
-		UpdatePointsText(Character.GetPoints());		
+		AttackDamageText.text = Character.GetStat(Stat.AttackDamage).ToString();
+		MaximumLifeText.text = Character.GetStat(Stat.Life).ToString();
+		UpdatePoints(Character.GetPoints());		
 	}
 	public void UpdateLevelText(int number) {
 		LevelText.text = number.ToString();
 	}
+	public void UpdatePoints(int points) {
+		if(points == 0) {
+			SetAttackDamageButtonInteractable(false);
+			SetAttackSpeedButtonInteractable(false);
+			SetMaximumLifeButtonInteractable(false);
+		} else {
+			SetAttackDamageButtonInteractable(true);
+			SetAttackSpeedButtonInteractable(!GameControl.IsAttackSpeedMax);
+			SetMaximumLifeButtonInteractable(true);
+		}
+		UpdatePointsText(points);
+	}
 	public void UpdatePointsText(int points) {
 		PointsText.text = points.ToString();
+	}
+	public void SetAttackDamageButtonInteractable(bool isInteractable) {
+		AttackDamageButton.GetComponent<Button>().interactable = isInteractable;
+	}
+	public void SetAttackSpeedButtonInteractable(bool isInteractable) {
+		AttackSpeedButton.GetComponent<Button>().interactable = isInteractable;
+	}
+	public void SetMaximumLifeButtonInteractable(bool isInteractable) {
+		MaximumLifeButton.GetComponent<Button>().interactable = isInteractable;
 	}
 }

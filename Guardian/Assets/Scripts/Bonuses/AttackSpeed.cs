@@ -13,5 +13,6 @@ public class AttackSpeed : MonoBehaviour
 			return;
 		collision.GetComponent<CharacterAttack>().IncreaseAttackSpeed(1);
 		Destroy(transform.gameObject);
+		GameControl.Notify(EnumMethods.GetDescription(Notifications.IncreasedAttackSpeed));
 	}
 }

@@ -12,5 +12,6 @@ public class IncreaseHP : MonoBehaviour {
 			return;
 		collision.GetComponent<Character>().IncreaseHPMultiplier(1);
 		Destroy(transform.gameObject);
+		GameControl.Notify(EnumMethods.GetDescription(Notifications.IncreasedMaximumHealth));
 	}
 }

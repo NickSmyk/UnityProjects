@@ -11,6 +11,7 @@ public class CharacterAttack : MonoBehaviour
 	public LayerMask WhatAreEnemies;
 	public float AttackRange;
 	Animator Animator;
+	private Character MainCharacter;
 
 
 
@@ -18,10 +19,13 @@ public class CharacterAttack : MonoBehaviour
     void Start() {
 		StartTimeBetweenAttack = 1f;
 		Animator = GetComponent<Animator>();
+		MainCharacter = gameObject.GetComponent<Character>();
 	}
 
     // Update is called once per frame
     void Update() {
+		if (!MainCharacter.IsCharacterStationary())
+			return;
 		Collider2D[] enemiesToAttack = Physics2D.OverlapCircleAll(AttackPosition.position, AttackRange, WhatAreEnemies);
 		bool anyoneToAttack = enemiesToAttack.Length > 0 && IsAnyoneAlive(enemiesToAttack);
 		if (!anyoneToAttack)
@@ -46,13 +50,14 @@ public class CharacterAttack : MonoBehaviour
 
 	public void DealDamage() {
 		Collider2D[] enemiesToAttack = Physics2D.OverlapCircleAll(AttackPosition.position, AttackRange, WhatAreEnemies);
-		float damage = gameObject.GetComponent<Character>().GetCharacterDamage();
+		float damage = MainCharacter.GetCharacterDamage();
 		for (int i = 0; i < enemiesToAttack.Length; i++) {
 			enemiesToAttack[i].GetComponent<EnemyScript>().TakeDamage(damage);
 		}
 	}
 
 	public void OnFinishAttack() {
+		//TimeBetweenAttack = StartTimeBetweenAttack;
 		Animator.SetTrigger("stationary");
 	}
 
@@ -75,12 +80,16 @@ public class CharacterAttack : MonoBehaviour
 	}
 
 	public bool IncreaseAttackSpeed(float multiplier) {
-		if (StartTimeBetweenAttack == 0.25)
+		if (StartTimeBetweenAttack == 0.25) {
+			GameControl.IsAttackSpeedMax = true;
 			return true;
+		}
 		var aps = 1 / StartTimeBetweenAttack * (1 + multiplier / 100);
 		StartTimeBetweenAttack = 1 / aps;
-		if (StartTimeBetweenAttack < 0.25)
+		if (StartTimeBetweenAttack < 0.25) {
 			StartTimeBetweenAttack = 0.25f;
+			GameControl.IsAttackSpeedMax = true;
+		}
 		return true;
 	}
 }
