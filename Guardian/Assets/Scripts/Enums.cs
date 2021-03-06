@@ -41,3 +41,15 @@ public enum Notifications {
 	[Description("Enemies now are stronger")]
 	EnemiesAreStronger
 }
+
+public enum MainCharacterAnimations {
+	[Description("IdleAnimationMainCharacter")]
+	MainCharacterIdle,
+	[Description("RunningAnimationMainCharacter")]
+	MainCharacterRun,
+	[Description("AttackAnimationMainCharacter")]
+	MainCharacterAttack,
+	[Description("DeathAnimationMainCharacter")]
+	MainCharacterDeath,
+
+}

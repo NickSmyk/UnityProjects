@@ -2,12 +2,11 @@
 using UnityEngine;
 using System;
 
-public class AudioManager : MonoBehaviour
-{
+public class AudioManager : MonoBehaviour {
 	public Sound[] Sounds;
 
 	private void Awake() {
-		foreach(Sound sound in Sounds) {
+		foreach (Sound sound in Sounds) {
 			sound.Source = gameObject.AddComponent<AudioSource>();
 			sound.Source.clip = sound.Clip;
 
@@ -15,9 +14,9 @@ public class AudioManager : MonoBehaviour
 			sound.Source.pitch = sound.Pitch;
 		}
 	}
-	
+
 	public void StopAllSounds() {
-		foreach(Sound sound in Sounds) {
+		foreach (Sound sound in Sounds) {
 			Stop(sound.Name);
 		}
 	}

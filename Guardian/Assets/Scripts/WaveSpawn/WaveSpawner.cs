@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class WaveSpawner : MonoBehaviour {
-	private enum SpawnState { Spawning, Waiting, Counting};
+	private enum SpawnState { Spawning, Waiting, Counting };
 
 	public Wave[] Waves;
 	public Transform[] SpawnPoints;
@@ -29,30 +29,30 @@ public class WaveSpawner : MonoBehaviour {
 	}
 
 	private void Update() {
-		if(State == SpawnState.Waiting ) {
+		if (State == SpawnState.Waiting) {
 			if (!EnemyIsAlive()) {
-				if (CurrentWave-1 >= NumberOfWaves) {
+				if (CurrentWave - 1 >= NumberOfWaves) {
 					CurrentWave = 1;
 					WaveComplited();
 				}
 			} else
-			return;		
-		} 
-		if(WaveCountdown <= 0 && State!= SpawnState.Spawning) {
+				return;
+		}
+		if (WaveCountdown <= 0 && State != SpawnState.Spawning) {
 			StartCoroutine(SpawnWave(Wave));
-		}else if(WaveCountdown > 0) {
+		} else if (WaveCountdown > 0) {
 			WaveCountdown -= Time.deltaTime;
 		}
 	}
 
 	bool EnemyIsAlive() {
 		SearchCountdown -= Time.deltaTime;
-		if(SearchCountdown <= 0f) {
+		if (SearchCountdown <= 0f) {
 			SearchCountdown = 1f;
 			if (GameObject.FindGameObjectWithTag("Enemy") == null) {
 				return false;
 			}
-		} 
+		}
 		return true;
 	}
 	#region Enemy Spawn
@@ -60,60 +60,43 @@ public class WaveSpawner : MonoBehaviour {
 		State = SpawnState.Spawning;
 		if (CurrentWave == 1)
 			yield return new WaitForSeconds(5f);
-		for(int i=0; i< Wave.Count; i++) {
-			SpawnEnemy(Wave.Enemy,i);
+		for (int i = 0; i < Wave.Count; i++) {
+			SpawnEnemy(Wave.Enemy, i);
 			yield return new WaitForSeconds(1f / Wave.Rate);
 		}
 		CurrentWave++;
-		
+
 		State = SpawnState.Waiting;
 		yield break;
 	}
 
 
 	void SpawnEnemy(Transform enemy, int enemyNumber) {
-		if(SpawnPoints.Length == 0) {
-			//Debug.Log("No spawn points");
+		if (SpawnPoints.Length == 0) {
 			return;
 		}
 		Transform sp = SpawnPoints[UnityEngine.Random.Range(0, SpawnPoints.Length)];
 		Vector3 postition = new Vector3(sp.position.x, (sp.position.y - UnityEngine.Random.Range(-0.7f, 0.7f)), sp.position.z);
-		enemy.GetComponent<Renderer>().sortingOrder = enemyNumber+3;
+		enemy.GetComponent<Renderer>().sortingOrder = enemyNumber + 3;
 		Instantiate(enemy, postition, sp.rotation);
-		//Debug.Log("Enemy spawned");
 	}
 	#endregion
 
 	void WaveComplited() {
-		if(CurrentLevel % 5 == 0) {
-			EnemyHealthMultiplier += 0.2f;
+		if (CurrentLevel % 5 == 0) {
+			EnemyHealthMultiplier += 0.5f;
 			EnemyDamageMultiplier += 0.1f;
 			Wave.Enemy.GetComponent<EnemyScript>().SetDamageMultiplier(EnemyDamageMultiplier);
 			Wave.Enemy.GetComponent<EnemyScript>().SetHealthMultiplier(EnemyHealthMultiplier);
 			GameControl.Notify(EnumMethods.GetDescription(Notifications.EnemiesAreStronger));
 			Wave.Count -= 3;
 			NumberOfWaves++;
-			Debug.Log("Difficulty has been increased");
 
 		}
 		Wave.Count++;
 		CurrentLevel++;
-		Debug.Log("DifficultyLevel");
-
 	}
 
-
-	/*void WaveComplited() {
-		State = SpawnState.Counting;
-		WaveCountdown = TimeBetweenWaves;
-		if(NextWave +1> Waves.Length - 1) {
-			NextWave = 0;
-			Debug.Log("All waves complited");
-			return;
-			// Level complited
-		}
-		NextWave++;
-	}*/
 }
 
 [Serializable]

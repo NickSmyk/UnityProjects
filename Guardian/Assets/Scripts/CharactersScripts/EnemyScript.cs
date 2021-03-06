@@ -27,13 +27,8 @@ public class EnemyScript : MonoBehaviour {
 		rb = GetComponent<Rigidbody2D>();
 		anim = GetComponent<Animator>();
 		localScale = transform.localScale;
-
-		//HealthMultiplier = 1f;
-		//DamageMultiplier = 1f;
 		CurrentHealth = EnemyBaseHealth * HealthMultiplier;
 		CurrentDamage = (BaseDamage + BaseDamage * BaseDamageMultiplier) * DamageMultiplier;
-
-
 		dirX = -1f;
 	}
 
@@ -43,22 +38,12 @@ public class EnemyScript : MonoBehaviour {
 			dirX = 0f;
 		else
 			dirX = -1f;
-		//dirX = CrossPlatformInputManager.GetAxisRaw("Horizontal") * moveSpeed;
 		transform.position += new Vector3(dirX, 0, 0) * Time.deltaTime * moveSpeed;
-
-
-		/*if (CrossPlatformInputManager.GetButtonDown("Jump"))
-			rb.AddForce(Vector2.up * 300f);*/
-
-		//anim.SetBool("isRunning", false);
 		if (Mathf.Abs(dirX) > 0) {
 			anim.SetBool("isRunning", true);
-			//FindObjectOfType<AudioManager>().Stop("DeagonWarriorHit");
 		} else {
 			anim.SetBool("isRunning", false);
 		}
-
-
 	}
 
 	public void PlayAttackSound() {
@@ -77,7 +62,6 @@ public class EnemyScript : MonoBehaviour {
 			facingRight = false;
 		if ((facingRight && localScale.x < 0) || (!facingRight && localScale.x > 0))
 			localScale.x *= -1;
-
 		transform.localScale = localScale;
 	}
 
@@ -87,10 +71,8 @@ public class EnemyScript : MonoBehaviour {
 			Die();
 			GameControl.IncreaseScore(1);
 			GameControl.GrantExperience(ExperienceOnDeath);
-			//Debug.Log("Enemy has been slained!");
 			return;
 		}
-		//Debug.Log("Enemy was damaged!");
 	}
 	public void Die() {
 		IsDead = true;

@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DeployAsteroids : MonoBehaviour
-{
+public class DeployAsteroids : MonoBehaviour {
 	public GameObject asteroidPrefab;
 	public static float respawnTime = 5f;
 	public static float DefaultRespawnTime = 5f;
@@ -23,9 +22,4 @@ public class DeployAsteroids : MonoBehaviour
 			spawnEnemy();
 		}
 	}
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

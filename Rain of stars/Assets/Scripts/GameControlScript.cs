@@ -92,8 +92,8 @@ public class GameControlScript : MonoBehaviour {
 				FindObjectOfType<AudioManager>().StopAllSounds();
 				gameOver.gameObject.SetActive(true);
 				Time.timeScale = 0f;
-				if(!wasSaved)
-				SaveScore(ScoreScript.CurrentScore, HighscoreTableName);
+				if (!wasSaved)
+					SaveScore(ScoreScript.CurrentScore, HighscoreTableName);
 				break;
 
 		}
@@ -105,16 +105,15 @@ public class GameControlScript : MonoBehaviour {
 		ScoreScript.ScoreMultiplier += 0.2f;
 	}
 	public IEnumerator StartTheLevelScaling(int CurrentLevel, int MaxLevel) {
-		while(CurrentLevel < MaxLevel && !isWaiting) {
+		while (CurrentLevel < MaxLevel && !isWaiting) {
 			isWaiting = true;
 			yield return new WaitForSeconds(SecondsBetweenLevelUp);
-			if(CurrentLevel >= MaxLevel) {
+			if (CurrentLevel >= MaxLevel) {
 				break;
 			}
 			CurrentLevel++;
 			IncreaseTheDifficalty();
 			IncreaseTheScoreMultiplier();
-			//Debug.Log("Level has been increased!");
 			isWaiting = false;
 		}
 	}

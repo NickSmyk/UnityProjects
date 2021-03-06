@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Core : MonoBehaviour {
-	private float BaseHealth = 2000f;
+	private float BaseHealth = 500f;
 	private float HealthMultiplier = 1;
 	private float CurrentHealth;
 	public HealthBarScript HealthBar;
@@ -15,20 +15,13 @@ public class Core : MonoBehaviour {
 
 	}
 
-    // Update is called once per frame
-    void Update()
-    {
-
-	}
+    
 	public void TakeDamage(float damage) {
 		CurrentHealth -= damage;
 		UpdateHealthBar();
 		if (CurrentHealth <= 0) {
-			//Die();
-			Debug.Log("Core has been destroyed");
 			return;
 		}
-		Debug.Log("Core  was damaged!");
 	}
 	private void UpdateHealthBar() {
 		var currentHealth = CurrentHealth / (BaseHealth * HealthMultiplier);

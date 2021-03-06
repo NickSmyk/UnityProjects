@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterAttack : MonoBehaviour
-{
+public class CharacterAttack : MonoBehaviour {
 	private float TimeBetweenAttack;
 	private float StartTimeBetweenAttack;
 
@@ -15,25 +14,25 @@ public class CharacterAttack : MonoBehaviour
 
 
 
-    // Start is called before the first frame update
-    void Start() {
-		StartTimeBetweenAttack = 1f;
-		Animator = GetComponent<Animator>();
+	void Start() {
+		StartTimeBetweenAttack = 1.5f;
 		MainCharacter = gameObject.GetComponent<Character>();
+		Animator = MainCharacter.GetComponent<Animator>();
 	}
 
-    // Update is called once per frame
-    void Update() {
-		if (!MainCharacter.IsCharacterStationary())
+	void Update() {
+		if (!MainCharacter.IsCharacterStationary() && !MainCharacter.GetIsAttacking() && !MainCharacter.GetCanAttack())
 			return;
 		Collider2D[] enemiesToAttack = Physics2D.OverlapCircleAll(AttackPosition.position, AttackRange, WhatAreEnemies);
 		bool anyoneToAttack = enemiesToAttack.Length > 0 && IsAnyoneAlive(enemiesToAttack);
 		if (!anyoneToAttack)
 			return;
-		if (TimeBetweenAttack <= 0 ) {
-				Animator.SetTrigger("attack");
-				FindObjectOfType<AudioManager>().Play("SwordSlash");
-				TimeBetweenAttack = StartTimeBetweenAttack;
+		if (TimeBetweenAttack <= 0) {
+			MainCharacter.SetIsAttacking(true);
+			MainCharacter.ChangeAnimationState(EnumMethods.GetDescription(MainCharacterAnimations.MainCharacterAttack));
+			FindObjectOfType<AudioManager>().Play("SwordSlash");
+			TimeBetweenAttack = StartTimeBetweenAttack;
+			Invoke("OnFinishAttack", MainCharacter.GetTheLenghtOfCurrentAnimation());
 		} else {
 			TimeBetweenAttack -= Time.deltaTime;
 		}
@@ -44,12 +43,11 @@ public class CharacterAttack : MonoBehaviour
 		Gizmos.DrawWireSphere(AttackPosition.position, AttackRange);
 	}
 
-	public void Attack() {
-
-	}
 
 	public void DealDamage() {
 		Collider2D[] enemiesToAttack = Physics2D.OverlapCircleAll(AttackPosition.position, AttackRange, WhatAreEnemies);
+		if (enemiesToAttack == null || enemiesToAttack.Length == 0)
+			return;
 		float damage = MainCharacter.GetCharacterDamage();
 		for (int i = 0; i < enemiesToAttack.Length; i++) {
 			enemiesToAttack[i].GetComponent<EnemyScript>().TakeDamage(damage);
@@ -57,8 +55,10 @@ public class CharacterAttack : MonoBehaviour
 	}
 
 	public void OnFinishAttack() {
-		//TimeBetweenAttack = StartTimeBetweenAttack;
-		Animator.SetTrigger("stationary");
+		if (!MainCharacter.GetIsAttacking())
+			return;
+		MainCharacter.SetIsAttacking(false);
+		MainCharacter.ChangeAnimationState(EnumMethods.GetDescription(MainCharacterAnimations.MainCharacterIdle));
 	}
 
 
@@ -80,14 +80,14 @@ public class CharacterAttack : MonoBehaviour
 	}
 
 	public bool IncreaseAttackSpeed(float multiplier) {
-		if (StartTimeBetweenAttack == 0.25) {
+		if (StartTimeBetweenAttack == 0.5) {
 			GameControl.IsAttackSpeedMax = true;
 			return true;
 		}
 		var aps = 1 / StartTimeBetweenAttack * (1 + multiplier / 100);
 		StartTimeBetweenAttack = 1 / aps;
-		if (StartTimeBetweenAttack < 0.25) {
-			StartTimeBetweenAttack = 0.25f;
+		if (StartTimeBetweenAttack < 0.5) {
+			StartTimeBetweenAttack = 0.5f;
 			GameControl.IsAttackSpeedMax = true;
 		}
 		return true;

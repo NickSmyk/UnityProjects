@@ -5,8 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GameControl : MonoBehaviour
-{
+public class GameControl : MonoBehaviour {
 	public Transform Notification;
 	public Transform EventCanvas;
 
@@ -38,8 +37,7 @@ public class GameControl : MonoBehaviour
 	public static bool IsAttackSpeedMax;
 
 	// Start is called before the first frame update
-	void Start()
-    {
+	void Start() {
 		Instance = this;
 		ScoreCount = 0;
 		Score.text = ScoreCount.ToString();
@@ -48,20 +46,18 @@ public class GameControl : MonoBehaviour
 
 		LevelingButtonImage = LevelingMenuButton.GetComponent<Image>();
 		BlinkCD = StartBlinkCD;
-		//MainCharacter = gameObject.GetComponent<Character>();
 		IsAttackSpeedMax = false;
 	}
 
-    // Update is called once per frame
-    void Update()
-    {
-        if(!isGameOver && (MainCharacter.GetCurrentHealth() <= 0 || TheCore.GetCurrentHealth() <= 0)) {
+	// Update is called once per frame
+	void Update() {
+		if (!isGameOver && (MainCharacter.GetCurrentHealth() <= 0 || TheCore.GetCurrentHealth() <= 0)) {
 			GameIsOver();
 		}
 
 		if (MainCharacter.GetPoints() == 0) {
-			if(LevelingButtonImage.color.a != 1)
-			LevelingButtonImage.color =  new Color(LevelingButtonImage.color.r, LevelingButtonImage.color.g, LevelingButtonImage.color.b, 1);
+			if (LevelingButtonImage.color.a != 1)
+				LevelingButtonImage.color = new Color(LevelingButtonImage.color.r, LevelingButtonImage.color.g, LevelingButtonImage.color.b, 1);
 			return;
 		}
 		if (BlinkCD <= 0) {
@@ -88,7 +84,6 @@ public class GameControl : MonoBehaviour
 
 	private void GameIsOver() {
 		gameOver.SetActive(true);
-		//Time.timeScale = 0f;
 		if (!wasSaved)
 			SaveScore(ScoreCount, HighscoreTableName);
 		wasSaved = true;
@@ -99,7 +94,7 @@ public class GameControl : MonoBehaviour
 	}
 
 	public static void DropAnItem(Transform Object) {
-		int itemNumber = Random.Range(1, 4);
+		int itemNumber = Random.Range(1, 3);
 		switch (itemNumber) {
 			case 1:
 				SpawnItem(Instance.IncreaseHP, Object);
@@ -119,7 +114,7 @@ public class GameControl : MonoBehaviour
 	}
 	#region Score
 	public static void IncreaseScore(int number) {
-		for(int i =0; i<number; i++) {
+		for (int i = 0; i < number; i++) {
 			IncreaseScore();
 		}
 		UpdateScore();
@@ -136,7 +131,6 @@ public class GameControl : MonoBehaviour
 	#endregion
 	public static void SpawnItem(Transform item, Transform Object) {
 		Vector3 position = Object.position;
-		//Debug.Log(position.x);
 		float xBound = GetTheBoundX(Instance.TheSpawnPoint);
 		if (position.x > xBound)
 			position.x = xBound;
@@ -144,7 +138,6 @@ public class GameControl : MonoBehaviour
 	}
 	public static float GetTheBoundX(Transform theSpawnPoint) {
 		float xBound = theSpawnPoint.position.x - theSpawnPoint.GetComponent<CircleCollider2D>().bounds.size.x / 2;
-		//Debug.Log(xBound);
 		return xBound;
 	}
 	#region Score saving
@@ -168,4 +161,6 @@ public class GameControl : MonoBehaviour
 		PlayerPrefs.Save();
 	}
 	#endregion
+
+
 }

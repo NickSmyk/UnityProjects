@@ -13,9 +13,4 @@ public class RightButtonHandler : MonoBehaviour, IPointerDownHandler, IPointerUp
 		isRightButtonDown = false;
 	}
 
-	// Update is called once per frame
-	/*void Update()
-    {
-        
-    }*/
 }

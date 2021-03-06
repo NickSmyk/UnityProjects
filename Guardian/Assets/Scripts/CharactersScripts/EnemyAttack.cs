@@ -13,7 +13,7 @@ public class EnemyAttack : MonoBehaviour {
 	Animator Animator;
 	private EnemyScript Enemy;
 	void Start() {
-		Animator = GetComponent<Animator>();
+		Animator = this.GetComponent<Animator>();
 		Enemy = gameObject.GetComponent<EnemyScript>();
 	}
 
@@ -23,14 +23,12 @@ public class EnemyAttack : MonoBehaviour {
 			return;
 		Collider2D[] enemiesToAttack = Physics2D.OverlapCircleAll(AttackPosition.position, AttackRange, WhatAreEnemies);
 		Collider2D[] coreToAttack = Physics2D.OverlapCircleAll(AttackPosition.position, AttackRange, CoreLayerMask);
-		Collider2D core = coreToAttack.Length == 0? null : coreToAttack[0];
+		Collider2D core = coreToAttack.Length == 0 ? null : coreToAttack[0];
 		Character characterToAttack = enemiesToAttack.Length > 0 ? enemiesToAttack[0].gameObject.GetComponent<Character>() : null;
 		if ((enemiesToAttack.Length > 0 && characterToAttack.CanCharacterBeAttacked()) || core != null)
 			Enemy.SetAttackState(true);
 		if (TimeBetweenAttack <= 0) {
-			if ((enemiesToAttack.Length > 0 &&characterToAttack.CanCharacterBeAttacked()) || core != null ) {
-				//gameObject.GetComponent<EnemyScript>().Stop();
-				//FindObjectOfType<AudioManager>().Play("DeagonWarriorHit");
+			if ((enemiesToAttack.Length > 0 && characterToAttack.CanCharacterBeAttacked()) || core != null) {
 				Animator.SetTrigger("attack");
 				TimeBetweenAttack = StartTimeBetweenAttack;
 			} else
@@ -59,12 +57,9 @@ public class EnemyAttack : MonoBehaviour {
 				continue;
 			character.GetComponent<Character>().TakeDamage(damage);
 		}
-		foreach(var core in coresToAttack) {
+		foreach (var core in coresToAttack) {
 			core.GetComponent<Core>().TakeDamage(damage);
 		}
-	}
-	public void OnEndAttack() {
-
 	}
 
 	public void OnFinishAttack() {

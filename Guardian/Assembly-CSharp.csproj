@@ -59,8 +59,8 @@
     <Compile Include="Assets\Scripts\CharactersScripts\Core.cs" />
     <Compile Include="Assets\Scripts\CharactersScripts\EnemyScript.cs" />
     <Compile Include="Assets\Scripts\CharactersScripts\Character.cs" />
-    <Compile Include="Assets\Scripts\Handlers\Boundaries.cs" />
     <Compile Include="Assets\Scripts\HighscoreTable.cs" />
+    <Compile Include="Assets\Scripts\Bonuses\Heal.cs" />
     <Compile Include="Assets\Scripts\WaveSpawn\WaveSpawner.cs" />
     <Compile Include="Assets\Scripts\MainMenu.cs" />
     <Compile Include="Assets\Scripts\AudioManager.cs" />
@@ -74,9 +74,9 @@
     <Compile Include="Assets\Scripts\LeftButtonHandler.cs" />
     <Compile Include="Assets\Scripts\Handlers\HealthBarScript.cs" />
     <Compile Include="Assets\Scripts\Bonuses\AttackPower.cs" />
+    <Compile Include="Assets\Scripts\Enums.cs" />
     <Compile Include="Assets\Scripts\LevelingMenu.cs" />
     <Compile Include="Assets\Scripts\Notification.cs" />
-    <Compile Include="Assets\Scripts\Enums.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\Knight Files\Read Me.txt" />

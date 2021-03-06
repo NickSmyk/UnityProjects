@@ -5,11 +5,10 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HighscoreTable : MonoBehaviour
-{
+public class HighscoreTable : MonoBehaviour {
 	private Transform entryContainer;
 	private Transform entryTemplate;
-	private float TemplateHeight = 150f;
+	private float TemplateHeight;
 
 	string HighscoreTableName = GameControl.HighscoreTableName;
 
@@ -21,34 +20,14 @@ public class HighscoreTable : MonoBehaviour
 
 		var highscores = GetHighscores(HighscoreTableName).HighscoresList;
 		FillTheTable(entryTemplate, entryContainer, highscores);
-		/*for (int i =0; i< 10; i++) {
-			Transform entryTransform = Instantiate(entryTemplate, entryContainer);
-			RectTransform entryRectTransform = entryTransform.GetComponent<RectTransform>();
-			entryRectTransform.anchoredPosition = new Vector2(0, -TemplateHeight * i);
-			entryTransform.gameObject.SetActive(true);
-
-			int rank = i + 1;
-			string rankString;
-			switch (rank) {
-				default: rankString = rank + "TH"; break;
-				case 1: rankString = "1ST"; break;
-				case 2: rankString = "2nd"; break;
-				case 3: rankString = "3RD"; break;
-			}
-			entryTransform.Find("Position").GetComponent<Text>().text = rankString;
-
-			int score = Random.Range(1, 1000);
-			entryTransform.Find("Score").GetComponent<Text>().text = score.ToString();
-
-		}*/
 	}
 	public void FillTheTable(Transform template, Transform container, List<ScoreEntry> listOfHighscores) {
 		int rank = 1;
 		var highscores = listOfHighscores.OrderByDescending(o => o.Score).ToList();
-		foreach(var highscore in highscores) {
+		foreach (var highscore in highscores) {
 			Transform entryTransform = Instantiate(template, container);
 			RectTransform entryRectTransform = entryTransform.GetComponent<RectTransform>();
-			entryRectTransform.anchoredPosition = new Vector2(0, -TemplateHeight * (rank-1));
+			entryRectTransform.anchoredPosition = new Vector2(0, -TemplateHeight * (rank - 1));
 			entryTransform.gameObject.SetActive(true);
 
 			string rankString;
@@ -75,23 +54,6 @@ public class HighscoreTable : MonoBehaviour
 		}
 
 	}
-	// Start is called before the first frame update
-	void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-	}
-
-
-	/*public static Highscores GetHighscoresForTheTable() {
-		return instance.GetHighscores(instance.HighscoreTableName);
-	}*/
-
 	public static Highscores GetHighscores(string highscoreTableName) {
 		string jsonString = PlayerPrefs.GetString(highscoreTableName);
 		Highscores highscores = JsonUtility.FromJson<Highscores>(jsonString) ?? new Highscores();

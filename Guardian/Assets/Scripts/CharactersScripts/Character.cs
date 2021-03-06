@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Character : MonoBehaviour
-{
+public class Character : MonoBehaviour {
 	private Rigidbody2D rb;
 	private Animator anim;
 	private float moveSpeed;
@@ -22,6 +21,8 @@ public class Character : MonoBehaviour
 	public HealthBarScript HealthBar;
 
 	private bool CanBeAttacked = false;
+	private bool IsAttacking;
+	private bool CanAttack;
 	#region Stats
 	public LevelingMenu LevelingMenu;
 	private int AttackSpeedStat = 0;
@@ -36,8 +37,7 @@ public class Character : MonoBehaviour
 
 
 	// Start is called before the first frame update
-	void Start()
-    {
+	void Start() {
 		rb = GetComponent<Rigidbody2D>();
 		anim = GetComponent<Animator>();
 		localScale = transform.localScale;
@@ -55,40 +55,34 @@ public class Character : MonoBehaviour
 		CurrentHealth = BaseHealth * HealthMultiplier;
 		CurrentDamage = (BaseDamage + BaseDamage * BaseDamageMultiplier) * DamageMultiplier;
 
-
+		IsAttacking = false;
+		CanAttack = true;
 
 		UpdateHealthBar();
 		moveSpeed = 3f;
-    }
+	}
 
-    // Update is called once per frame
-    void Update()
-    {
+	// Update is called once per frame
+	void Update() {
+
 		if (CurrentHealth <= 0)
 			return;
-		//dirX = CrossPlatformInputManager.GetAxisRaw("Horizontal") * moveSpeed;
-		dirX = RightButtonHandler.isRightButtonDown && LeftButtonHandler.isLeftButtonDown? 0f:
-			(RightButtonHandler.isRightButtonDown? 1f : (LeftButtonHandler.isLeftButtonDown? -1f : 0));
+		dirX = RightButtonHandler.isRightButtonDown && LeftButtonHandler.isLeftButtonDown ? 0f :
+			(RightButtonHandler.isRightButtonDown ? 1f : (LeftButtonHandler.isLeftButtonDown ? -1f : 0));
 		transform.position += new Vector3(dirX, 0, 0) * Time.deltaTime * moveSpeed;
-
-
-		/*if (CrossPlatformInputManager.GetButtonDown("Jump"))
-			rb.AddForce(Vector2.up * 300f);*/
-
-		//anim.SetBool("isRunning", false);
 		if (Mathf.Abs(dirX) > 0) {
-			anim.ResetTrigger("attack");
-			anim.SetBool("isRunning", true);
-			anim.SetBool("isAttacking", false);
+			if (IsAttacking)
+				IsAttacking = false;
+			ChangeAnimationState(EnumMethods.GetDescription(MainCharacterAnimations.MainCharacterRun));
 			FindObjectOfType<AudioManager>().Play("Walk");
 			FindObjectOfType<AudioManager>().Stop("SwordSlash");
-		} else {
-			anim.SetBool("isRunning", false);
+		} else if (!IsAttacking) {
+			ChangeAnimationState(EnumMethods.GetDescription(MainCharacterAnimations.MainCharacterIdle));
 			FindObjectOfType<AudioManager>().Stop("Walk");
 		}
-			
 
-    }
+
+	}
 
 	private void FixedUpdate() {
 		rb.velocity = new Vector2(dirX, rb.velocity.y);
@@ -120,8 +114,10 @@ public class Character : MonoBehaviour
 	}
 	public void Die() {
 		dirX = 0f;
-		anim.SetBool("isRunning", false);
-		anim.SetTrigger("death");
+		IsAttacking = false;
+		FindObjectOfType<AudioManager>().StopAllSounds();
+		CanAttack = false;
+		ChangeAnimationState(EnumMethods.GetDescription(MainCharacterAnimations.MainCharacterDeath));
 	}
 	public void Destroy() {
 		Destroy(gameObject);
@@ -148,7 +144,7 @@ public class Character : MonoBehaviour
 	}
 
 	public void IncreaseAttackDamageMultiplier(float multiplier) {
-		DamageMultiplier = DamageMultiplier + multiplier/100;
+		DamageMultiplier = DamageMultiplier + multiplier / 100;
 		RecalculateCurrentDamage();
 	}
 	public void IncreaseHPMultiplier(float multiplier) {
@@ -157,11 +153,35 @@ public class Character : MonoBehaviour
 		CurrentHealth = BaseHealth * HealthMultiplier - takenDamage;
 		UpdateHealthBar();
 	}
+	public void Heal(float healingAmount) {
+		CurrentHealth = CurrentHealth + healingAmount;
+		if (CurrentHealth > BaseHealth * HealthMultiplier)
+			CurrentHealth = BaseHealth * HealthMultiplier;
+		UpdateHealthBar();
+	}
+	public void Heal(int healingAmount) {
+		CurrentHealth = CurrentHealth + BaseHealth * HealthMultiplier * healingAmount / 100;
+		if (CurrentHealth > BaseHealth * HealthMultiplier)
+			CurrentHealth = BaseHealth * HealthMultiplier;
+		UpdateHealthBar();
+	}
 	public float GetCurrentHealth() {
 		return CurrentHealth;
 	}
 	public bool IsCharacterStationary() {
 		return dirX == 0;
+	}
+	public void SetIsAttacking(bool value) {
+		IsAttacking = value;
+	}
+	public bool GetIsAttacking() {
+		return IsAttacking;
+	}
+	public void SetCanAttack(bool value) {
+		CanAttack = value;
+	}
+	public bool GetCanAttack() {
+		return CanAttack;
 	}
 	#region Leveling
 	public void IncreaseTheStat(Stat statType) {
@@ -188,20 +208,21 @@ public class Character : MonoBehaviour
 				return AttackSpeedStat;
 			case Stat.Life:
 				return HealthStat;
-			default: return -1;
+			default:
+				return -1;
 		}
-		
+
 	}
 	public void IncreaseLevel() {
 		ExpToLevelUp = ExpToLevelUp * 2f;
-		Points ++;
+		Points++;
 		CurrentLevel++;
 		LevelingMenu.UpdateLevelText(CurrentLevel);
 		LevelingMenu.UpdatePoints(Points);
 		GameControl.Notify(EnumMethods.GetDescription(Notifications.LevelUp));
 	}
 	public void IncreaseLevel(int number) {
-		CurrentLevel+= number;
+		CurrentLevel += number;
 	}
 	public void DecreaseLevel() {
 		CurrentLevel--;
@@ -216,6 +237,19 @@ public class Character : MonoBehaviour
 	}
 	public void DecreasePoints() {
 		Points--;
+	}
+	#endregion
+
+	#region Animation 
+	private string currentState;
+	public void ChangeAnimationState(string newState) {
+		if (currentState == newState)
+			return;
+		anim.Play(newState);
+		currentState = newState;
+	}
+	public float GetTheLenghtOfCurrentAnimation() {
+		return anim.GetCurrentAnimatorStateInfo(0).length;
 	}
 	#endregion
 }

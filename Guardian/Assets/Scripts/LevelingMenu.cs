@@ -4,10 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LevelingMenu : MonoBehaviour
-{
-	// Start is called before the first frame update
-
+public class LevelingMenu : MonoBehaviour {
 	public Transform MainCharacter;
 	public GameObject LvlingMenu;
 	private Character Character;
@@ -24,21 +21,12 @@ public class LevelingMenu : MonoBehaviour
 	public TextMeshProUGUI PointsText;
 
 
-	void Start()
-    {
-		//LvlingMenu.SetActive(false);
+	void Start() {
 		Character = MainCharacter.GetComponent<Character>();
 	}
 
-    // Update is called once per frame
-    void Update()
-    {
-
-	}
-
-
 	public void IncreaseAttackSpeed() {
-		if(Character.GetPoints() >= 1) {
+		if (Character.GetPoints() >= 1) {
 			Character.IncreaseTheStat(Stat.AttackSpeed);
 			Character.DecreasePoints();
 			UpdateStats();
@@ -58,8 +46,6 @@ public class LevelingMenu : MonoBehaviour
 			UpdateStats();
 		}
 	}
-
-
 	public void OpenLvlingMenu() {
 		LvlingMenu.SetActive(true);
 	}
@@ -70,13 +56,13 @@ public class LevelingMenu : MonoBehaviour
 		AttackSpeedText.text = Character.GetStat(Stat.AttackSpeed).ToString();
 		AttackDamageText.text = Character.GetStat(Stat.AttackDamage).ToString();
 		MaximumLifeText.text = Character.GetStat(Stat.Life).ToString();
-		UpdatePoints(Character.GetPoints());		
+		UpdatePoints(Character.GetPoints());
 	}
 	public void UpdateLevelText(int number) {
 		LevelText.text = number.ToString();
 	}
 	public void UpdatePoints(int points) {
-		if(points == 0) {
+		if (points == 0) {
 			SetAttackDamageButtonInteractable(false);
 			SetAttackSpeedButtonInteractable(false);
 			SetMaximumLifeButtonInteractable(false);
