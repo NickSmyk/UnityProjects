@@ -21,6 +21,7 @@ public class WaveSpawner : MonoBehaviour {
 	private int CurrentWave = 1;
 	private float EnemyHealthMultiplier;
 	private float EnemyDamageMultiplier;
+	private float EnemyExperienceMultiplier;
 
 	private void Start() {
 		WaveCountdown = TimeBetweenWaves;
@@ -86,8 +87,10 @@ public class WaveSpawner : MonoBehaviour {
 		if (CurrentLevel % 5 == 0) {
 			EnemyHealthMultiplier += 0.5f;
 			EnemyDamageMultiplier += 0.1f;
+			EnemyExperienceMultiplier += 1;
 			Wave.Enemy.GetComponent<EnemyScript>().SetDamageMultiplier(EnemyDamageMultiplier);
 			Wave.Enemy.GetComponent<EnemyScript>().SetHealthMultiplier(EnemyHealthMultiplier);
+			Wave.Enemy.GetComponent<EnemyScript>().SetExperienceMultiplier(EnemyExperienceMultiplier);
 			GameControl.Notify(EnumMethods.GetDescription(Notifications.EnemiesAreStronger));
 			Wave.Count -= 3;
 			NumberOfWaves++;

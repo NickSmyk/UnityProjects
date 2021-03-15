@@ -36,8 +36,8 @@ public enum Notifications {
 	IncreasedAttackDamage,
 	[Description("Attack Speed Increased")]
 	IncreasedAttackSpeed,
-	[Description("Maximum Health Increased")]
-	IncreasedMaximumHealth,
+	[Description("Maximum Life Increased")]
+	IncreasedMaximumLife,
 	[Description("Enemies now are stronger")]
 	EnemiesAreStronger
 }

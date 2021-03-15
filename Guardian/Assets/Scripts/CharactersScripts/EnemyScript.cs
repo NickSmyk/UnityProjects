@@ -21,13 +21,17 @@ public class EnemyScript : MonoBehaviour {
 
 	private bool CanAttack = false;
 	private bool IsDead = false;
-	private float ExperienceOnDeath = 100f;
+
+	private float BaseExperienceOnDeath = 100f;
+	private float ExperienceMultiplier = 1f;
+	private float ExperienceOnDeath;
 	// Start is called before the first frame update
 	void Start() {
 		rb = GetComponent<Rigidbody2D>();
 		anim = GetComponent<Animator>();
 		localScale = transform.localScale;
 		CurrentHealth = EnemyBaseHealth * HealthMultiplier;
+		ExperienceOnDeath = BaseExperienceOnDeath * ExperienceMultiplier;
 		CurrentDamage = (BaseDamage + BaseDamage * BaseDamageMultiplier) * DamageMultiplier;
 		dirX = -1f;
 	}
@@ -112,6 +116,9 @@ public class EnemyScript : MonoBehaviour {
 	}
 	public void SetDamageMultiplier(float multiplier) {
 		DamageMultiplier = multiplier;
+	}
+	public void SetExperienceMultiplier(float multiplier) {
+
 	}
 
 }

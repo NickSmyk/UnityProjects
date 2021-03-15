@@ -21,11 +21,11 @@ public class CharacterAttack : MonoBehaviour {
 	}
 
 	void Update() {
-		if (!MainCharacter.IsCharacterStationary() && !MainCharacter.GetIsAttacking() && !MainCharacter.GetCanAttack())
+		if (MainCharacter.GetCurrentHealth() <=0 || !MainCharacter.IsCharacterStationary() || MainCharacter.GetIsAttacking() || !MainCharacter.GetCanAttack())
 			return;
 		Collider2D[] enemiesToAttack = Physics2D.OverlapCircleAll(AttackPosition.position, AttackRange, WhatAreEnemies);
 		bool anyoneToAttack = enemiesToAttack.Length > 0 && IsAnyoneAlive(enemiesToAttack);
-		if (!anyoneToAttack)
+		if (!anyoneToAttack || MainCharacter.GetIsRunning())
 			return;
 		if (TimeBetweenAttack <= 0) {
 			MainCharacter.SetIsAttacking(true);

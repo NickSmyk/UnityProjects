@@ -23,6 +23,7 @@ public class LevelingMenu : MonoBehaviour {
 
 	void Start() {
 		Character = MainCharacter.GetComponent<Character>();
+		UpdateStats();
 	}
 
 	public void IncreaseAttackSpeed() {

@@ -10,8 +10,17 @@ public class Heal : MonoBehaviour {
 		}
 		if (collision.tag != "Player")
 			return;
-		collision.GetComponent<Character>().Heal(5);
+		Character character = collision.GetComponent<Character>();
+		if (character == null)
+			return;
+		if (character.IsCharacterAtMaximumLife()) {
+			character.IncreaseHPMultiplier(2);
+			GameControl.Notify(EnumMethods.GetDescription(Notifications.IncreasedMaximumLife));
+		}
+		else {
+			character.Heal(5);
+			GameControl.Notify(EnumMethods.GetDescription(Notifications.Healing));
+		}
 		Destroy(transform.gameObject);
-		GameControl.Notify(EnumMethods.GetDescription(Notifications.Healing));
 	}
 }

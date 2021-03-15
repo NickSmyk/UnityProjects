@@ -19,6 +19,7 @@ ScriptsOnlyBuild:
     - UnityEditor.U2D.Animation.BoneGizmo
     Unity.2D.IK.Editor.dll:
     - UnityEditor.U2D.IK.IKEditorManager
+    - UnityEditor.U2D.IK.IKGizmos
     Unity.2D.IK.Runtime.dll:
     - UnityEditor.U2D.IK.IKEditorManagerHelper
     Unity.2D.Sprite.Editor.dll:
@@ -90,49 +91,49 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 6154}
+      Script: {instanceID: 1522}
     - Class: 114
-      Script: {instanceID: 6420}
+      Script: {instanceID: 1792}
     - Class: 114
-      Script: {instanceID: 6510}
+      Script: {instanceID: 1890}
     - Class: 114
-      Script: {instanceID: 6586}
+      Script: {instanceID: 1966}
     - Class: 114
-      Script: {instanceID: 6634}
+      Script: {instanceID: 2014}
     - Class: 114
-      Script: {instanceID: 6658}
+      Script: {instanceID: 2038}
     - Class: 114
-      Script: {instanceID: 6732}
+      Script: {instanceID: 2116}
     - Class: 114
-      Script: {instanceID: 6736}
+      Script: {instanceID: 2120}
     - Class: 114
-      Script: {instanceID: 7098}
+      Script: {instanceID: 2488}
     - Class: 114
-      Script: {instanceID: 7242}
+      Script: {instanceID: 2634}
     - Class: 114
-      Script: {instanceID: 7282}
+      Script: {instanceID: 2676}
     - Class: 114
-      Script: {instanceID: 7408}
+      Script: {instanceID: 2804}
     - Class: 114
-      Script: {instanceID: 7468}
+      Script: {instanceID: 2864}
     - Class: 114
-      Script: {instanceID: 7566}
+      Script: {instanceID: 2962}
     - Class: 114
-      Script: {instanceID: 7622}
+      Script: {instanceID: 3018}
     - Class: 114
-      Script: {instanceID: 7724}
+      Script: {instanceID: 3120}
     - Class: 114
-      Script: {instanceID: 7950}
+      Script: {instanceID: 3350}
     - Class: 114
-      Script: {instanceID: 8496}
+      Script: {instanceID: 3898}
     - Class: 114
-      Script: {instanceID: 8934}
+      Script: {instanceID: 4348}
     - Class: 114
-      Script: {instanceID: 9018}
+      Script: {instanceID: 4434}
     - Class: 114
-      Script: {instanceID: 9270}
+      Script: {instanceID: 4692}
     - Class: 114
-      Script: {instanceID: 9296}
+      Script: {instanceID: 4718}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -171,27 +172,27 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 6154}
+      Script: {instanceID: 1522}
     - Class: 114
-      Script: {instanceID: 6420}
+      Script: {instanceID: 1792}
     - Class: 114
-      Script: {instanceID: 6732}
+      Script: {instanceID: 2116}
     - Class: 114
-      Script: {instanceID: 7098}
+      Script: {instanceID: 2488}
     - Class: 114
-      Script: {instanceID: 7242}
+      Script: {instanceID: 2634}
     - Class: 114
-      Script: {instanceID: 7282}
+      Script: {instanceID: 2676}
     - Class: 114
-      Script: {instanceID: 7408}
+      Script: {instanceID: 2804}
     - Class: 114
-      Script: {instanceID: 7622}
+      Script: {instanceID: 3018}
     - Class: 114
-      Script: {instanceID: 7724}
+      Script: {instanceID: 3120}
     - Class: 114
-      Script: {instanceID: 8496}
+      Script: {instanceID: 3898}
     - Class: 114
-      Script: {instanceID: 9616}
+      Script: {instanceID: 5042}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -228,29 +229,29 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 6154}
+      Script: {instanceID: 1522}
     - Class: 114
-      Script: {instanceID: 6420}
+      Script: {instanceID: 1792}
     - Class: 114
-      Script: {instanceID: 6726}
+      Script: {instanceID: 2108}
     - Class: 114
-      Script: {instanceID: 7098}
+      Script: {instanceID: 2488}
     - Class: 114
-      Script: {instanceID: 7242}
+      Script: {instanceID: 2634}
     - Class: 114
-      Script: {instanceID: 7282}
+      Script: {instanceID: 2676}
     - Class: 114
-      Script: {instanceID: 7408}
+      Script: {instanceID: 2804}
     - Class: 114
-      Script: {instanceID: 7622}
+      Script: {instanceID: 3018}
     - Class: 114
-      Script: {instanceID: 7724}
+      Script: {instanceID: 3120}
     - Class: 114
-      Script: {instanceID: 8496}
+      Script: {instanceID: 3898}
     - Class: 114
-      Script: {instanceID: 8840}
+      Script: {instanceID: 4254}
     - Class: 114
-      Script: {instanceID: 9168}
+      Script: {instanceID: 4586}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -873,4 +874,4 @@ ScriptsOnlyBuild:
   - Assets/Scenes/MainMenu.unity
   - Assets/Scenes/Game.unity
   - Assets/Scenes/Highscores.unity
-  playerPath: D:/Games apk/Rain of stars.apk
+  playerPath: D:/Games apk/Rain of Stars release.apk

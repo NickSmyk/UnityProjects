@@ -23,6 +23,7 @@ public class Character : MonoBehaviour {
 	private bool CanBeAttacked = false;
 	private bool IsAttacking;
 	private bool CanAttack;
+	private bool IsRunning;
 	#region Stats
 	public LevelingMenu LevelingMenu;
 	private int AttackSpeedStat = 0;
@@ -56,6 +57,7 @@ public class Character : MonoBehaviour {
 		CurrentDamage = (BaseDamage + BaseDamage * BaseDamageMultiplier) * DamageMultiplier;
 
 		IsAttacking = false;
+		IsRunning = false;
 		CanAttack = true;
 
 		UpdateHealthBar();
@@ -74,9 +76,11 @@ public class Character : MonoBehaviour {
 			if (IsAttacking)
 				IsAttacking = false;
 			ChangeAnimationState(EnumMethods.GetDescription(MainCharacterAnimations.MainCharacterRun));
+			IsRunning = true;
 			FindObjectOfType<AudioManager>().Play("Walk");
 			FindObjectOfType<AudioManager>().Stop("SwordSlash");
 		} else if (!IsAttacking) {
+			IsRunning = false;
 			ChangeAnimationState(EnumMethods.GetDescription(MainCharacterAnimations.MainCharacterIdle));
 			FindObjectOfType<AudioManager>().Stop("Walk");
 		}
@@ -177,18 +181,32 @@ public class Character : MonoBehaviour {
 	public bool GetIsAttacking() {
 		return IsAttacking;
 	}
+	public void SetIsRunning(bool value) {
+		IsRunning = value;
+	}
+	public bool GetIsRunning() {
+		return IsRunning;
+	}
 	public void SetCanAttack(bool value) {
 		CanAttack = value;
 	}
 	public bool GetCanAttack() {
 		return CanAttack;
 	}
+	public bool IsCharacterAtMaximumLife() {
+		float maxLife = BaseHealth * HealthMultiplier;
+		bool isMaximumLife = CurrentHealth == maxLife;
+		if (isMaximumLife)
+			return true;
+		else
+			return false;
+	}
 	#region Leveling
 	public void IncreaseTheStat(Stat statType) {
 		switch (statType) {
 			case Stat.AttackDamage:
 				AttackDamageStat++;
-				IncreaseAttackDamageMultiplier(10);
+				IncreaseAttackDamageMultiplier(30);
 				break;
 			case Stat.AttackSpeed:
 				AttackSpeedStat++;
@@ -196,7 +214,7 @@ public class Character : MonoBehaviour {
 				break;
 			case Stat.Life:
 				HealthStat++;
-				IncreaseHPMultiplier(8);
+				IncreaseHPMultiplier(60);
 				break;
 		}
 	}
