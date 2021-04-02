@@ -1,6 +1,6 @@
 Using pre-set license
 Built from '2020.2/staging' branch; Version is '2020.2.7f1 (c53830e277f1) revision 12924976'; Using compiler version '192528614'; Build Type 'Release'
-OS: 'Windows 10 Pro; OS build 18363.1379; Version 1909; 64bit' Language: 'en' Physical Memory: 16331 MB
+OS: 'Windows 10 Pro; OS build 19042.867; Version 2009; 64bit' Language: 'en' Physical Memory: 16331 MB
 BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
 
  COMMAND LINE ARGUMENTS:
@@ -15,11 +15,11 @@ D:/GitHub/UnityProjects/Rain of stars
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-60315
+60523
 Successfully changed project path to: D:/GitHub/UnityProjects/Rain of stars
 D:/GitHub/UnityProjects/Rain of stars
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 104.16 ms, found 1 plugins.
+Refreshing native plugins compatible for Editor in 48.48 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2020.2.7f1 (c53830e277f1)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2020.2.7f1/Editor/Data/Resources/UnitySubsystems
@@ -35,183 +35,205 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2020.2.7f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2020.2.7f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2020.2.7f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56572
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56576
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.2.7f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.002876 seconds.
+Registered in 0.003082 seconds.
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 51.60 ms, found 1 plugins.
+Refreshing native plugins compatible for Editor in 48.96 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  4.718 seconds
+- Completed reload, in  3.572 seconds
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.001090 seconds.
+Registered in 0.000883 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 50.59 ms, found 1 plugins.
+Refreshing native plugins compatible for Editor in 49.04 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.712 seconds
+- Completed reload, in  1.439 seconds
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.07 seconds
-Refreshing native plugins compatible for Editor in 0.41 ms, found 1 plugins.
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.08 seconds
+Refreshing native plugins compatible for Editor in 0.38 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 1834 Unused Serialized files (Serialized files now loaded: 0)
 System memory in use before: 86.9 MB.
 System memory in use after: 87.0 MB.
 
 Unloading 19 unused Assets to reduce memory usage. Loaded Objects now: 2282.
-Total: 2.109600 ms (FindLiveObjects: 0.207900 ms CreateObjectMapping: 0.046000 ms MarkObjects: 1.768500 ms  DeleteObjects: 0.085900 ms)
+Total: 2.895000 ms (FindLiveObjects: 0.432800 ms CreateObjectMapping: 0.060500 ms MarkObjects: 2.312500 ms  DeleteObjects: 0.086800 ms)
 
 ========================================================================
 Received Import Request.
-  path: Assets/Characters/Snail/Snail_0001_Frame 2.psd
-  artifactKey: Guid(fd89e4912851eb64792d8c530837b370) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Characters/Snail/Snail_0001_Frame 2.psd using Guid(fd89e4912851eb64792d8c530837b370) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6e63359be38a12f35d24f49f7fb013d5') in 0.196837 seconds
-  Import took 0.203177 seconds .
+  path: Assets/Characters/Materials/BackgroundGame.mat
+  artifactKey: Guid(85a6ab6638598f94bb85e590999c80ac) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Characters/Materials/BackgroundGame.mat using Guid(85a6ab6638598f94bb85e590999c80ac) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9ca431f8d0a20c6349081322a8e6d1d9') in 0.431209 seconds
+  Import took 0.434610 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000237 seconds.
-  path: Assets/Characters/Snail/SnailSheet_0000_Frame 3.psd
-  artifactKey: Guid(737346d2da691f043a4546a9782eb660) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Characters/Snail/SnailSheet_0000_Frame 3.psd using Guid(737346d2da691f043a4546a9782eb660) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b36e2baff424e66c8c2165f453d60509') in 0.041555 seconds
-  Import took 0.050527 seconds .
+  Time since last request: 204.373663 seconds.
+  path: Assets/Prefabs/Falling downObject.prefab
+  artifactKey: Guid(e3240cafddb414c48af9f9948b913b39) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Falling downObject.prefab using Guid(e3240cafddb414c48af9f9948b913b39) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '934d6c0a2149ddb34c5d27463a294978') in 0.023509 seconds
+  Import took 0.027810 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000256 seconds.
-  path: Assets/TextMesh Pro/Sprites/EmojiOne.png
-  artifactKey: Guid(dffef66376be4fa480fb02b19edbe903) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/TextMesh Pro/Sprites/EmojiOne.png using Guid(dffef66376be4fa480fb02b19edbe903) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd0598e761293667b153b0ae52eb822c5') in 0.053950 seconds
-  Import took 0.062605 seconds .
+  Time since last request: 13.782822 seconds.
+  path: Assets/Prefabs/Meteor.prefab
+  artifactKey: Guid(e3240cafddb414c48af9f9948b913b39) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Meteor.prefab using Guid(e3240cafddb414c48af9f9948b913b39) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6de84be029c1f42f7d08b82391552c85') in 0.011352 seconds
+  Import took 0.015212 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000205 seconds.
-  path: Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Fallback.asset
-  artifactKey: Guid(2e498d1c8094910479dc3e1b768306a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Fallback.asset using Guid(2e498d1c8094910479dc3e1b768306a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '956b8bae2d4e390be9bfe13b01826f1c') in 0.204283 seconds
-  Import took 0.209973 seconds .
+  Time since last request: 0.022096 seconds.
+  path: Assets/Prefabs/Meteor.prefab
+  artifactKey: Guid(e3240cafddb414c48af9f9948b913b39) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Meteor.prefab using Guid(e3240cafddb414c48af9f9948b913b39) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6de84be029c1f42f7d08b82391552c85') in 0.008468 seconds
+  Import took 0.012441 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001506 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.45 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.820 seconds
+Platform modules already initialized, skipping
+Switching build target platform(5) subTarget(0) extendedPlatform(0) -> platform(13) subTarget(537395200) extendedPlatform(0)
+Refreshing native plugins compatible for Editor in 0.42 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1815 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 88.7 MB.
+System memory in use after: 88.8 MB.
+
+Unloading 8 unused Assets to reduce memory usage. Loaded Objects now: 2325.
+Total: 9.861800 ms (FindLiveObjects: 0.332200 ms CreateObjectMapping: 0.095000 ms MarkObjects: 9.412900 ms  DeleteObjects: 0.020200 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:graphics/normal-map-encoding: 01000000000000000000000000000000 -> 02000000000000000000000000000000
+========================================================================
+Received Import Request.
+  Time since last request: 14.833030 seconds.
+  path: Assets/Prefabs/Meteor.prefab
+  artifactKey: Guid(e3240cafddb414c48af9f9948b913b39) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Meteor.prefab using Guid(e3240cafddb414c48af9f9948b913b39) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '51b55e4cacd8e09dae1f3c2aea4016ab') in 0.115031 seconds
+  Import took 0.123634 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000240 seconds.
-  path: Assets/Characters/Background.jpg
-  artifactKey: Guid(6baac8dc463d69f45b87960642e14799) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Characters/Background.jpg using Guid(6baac8dc463d69f45b87960642e14799) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '08c1af9dbb4ef61ee7a39442f8c62742') in 0.090460 seconds
-  Import took 0.094687 seconds .
+  Time since last request: 2.424316 seconds.
+  path: Assets/Prefabs/Meteor.prefab
+  artifactKey: Guid(e3240cafddb414c48af9f9948b913b39) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Meteor.prefab using Guid(e3240cafddb414c48af9f9948b913b39) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '32dc7767c06ad491d7e8c9312b390cee') in 0.004162 seconds
+  Import took 0.008340 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.029225 seconds.
+  path: Assets/Prefabs/Meteor.prefab
+  artifactKey: Guid(e3240cafddb414c48af9f9948b913b39) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Meteor.prefab using Guid(e3240cafddb414c48af9f9948b913b39) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '32dc7767c06ad491d7e8c9312b390cee') in 0.009731 seconds
+  Import took 0.013925 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 4.574886 seconds.
+  path: Assets/Prefabs/Meteor.prefab
+  artifactKey: Guid(e3240cafddb414c48af9f9948b913b39) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Meteor.prefab using Guid(e3240cafddb414c48af9f9948b913b39) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5f9277b413e99f16d302a31265eda0ea') in 0.004256 seconds
+  Import took 0.010632 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.029526 seconds.
+  path: Assets/Prefabs/Meteor.prefab
+  artifactKey: Guid(e3240cafddb414c48af9f9948b913b39) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Meteor.prefab using Guid(e3240cafddb414c48af9f9948b913b39) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5f9277b413e99f16d302a31265eda0ea') in 0.005595 seconds
+  Import took 0.009730 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 6.460934 seconds.
+  path: Assets/Prefabs/Falling downObject.prefab
+  artifactKey: Guid(e3240cafddb414c48af9f9948b913b39) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Falling downObject.prefab using Guid(e3240cafddb414c48af9f9948b913b39) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '16b6ca42f10a1a4647e14ae1ebea1b17') in 0.004159 seconds
+  Import took 0.011773 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.002589 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.42 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.352 seconds
+Platform modules already initialized, skipping
+Switching build target platform(5) subTarget(0) extendedPlatform(0) -> platform(13) subTarget(537395200) extendedPlatform(0)
+Refreshing native plugins compatible for Editor in 0.44 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1815 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 88.7 MB.
+System memory in use after: 88.8 MB.
+
+Unloading 8 unused Assets to reduce memory usage. Loaded Objects now: 2328.
+Total: 2.133900 ms (FindLiveObjects: 0.219400 ms CreateObjectMapping: 0.045900 ms MarkObjects: 1.846500 ms  DeleteObjects: 0.020400 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:graphics/normal-map-encoding: 01000000000000000000000000000000 -> 02000000000000000000000000000000
+========================================================================
+Received Import Request.
+  Time since last request: 40.018480 seconds.
+  path: Assets/Prefabs/Meteor.prefab
+  artifactKey: Guid(e3240cafddb414c48af9f9948b913b39) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Meteor.prefab using Guid(e3240cafddb414c48af9f9948b913b39) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd92d86df393b6b5e4cfbb3d50d1418f3') in 0.037377 seconds
+  Import took 0.041993 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 3.384381 seconds.
+  path: Assets/Sounds/hit.mp3
+  artifactKey: Guid(cfcf0cb5495197a45881e6d7b136e09f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sounds/hit.mp3 using Guid(cfcf0cb5495197a45881e6d7b136e09f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c599177b40d86b625e40596fcd2d0680') in 0.056889 seconds
+  Import took 0.060999 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000191 seconds.
+  path: Assets/Sounds/snail_movement.wav
+  artifactKey: Guid(999c412f143bf4345aa5bcafd00c232d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sounds/snail_movement.wav using Guid(999c412f143bf4345aa5bcafd00c232d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b9a2e6fbd511fab5bfd74551074742a8') in 0.026368 seconds
+  Import took 0.029956 seconds .
 
 ========================================================================
 Received Import Request.
   Time since last request: 0.000181 seconds.
-  path: Assets/Characters/Meteor/Meteor - copy_0000_Frame 2.psd
-  artifactKey: Guid(97f44a4b6e6e1b442afe3e9bd6755071) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Characters/Meteor/Meteor - copy_0000_Frame 2.psd using Guid(97f44a4b6e6e1b442afe3e9bd6755071) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '289359f86bb18bdd8ff49b479a8f00d4') in 0.062513 seconds
-  Import took 0.068586 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000190 seconds.
-  path: Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF.asset
-  artifactKey: Guid(8f586378b4e144a9851e7b34d9b748ee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF.asset using Guid(8f586378b4e144a9851e7b34d9b748ee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f9d85504413c1473dc7715d0e89177f3') in 0.080220 seconds
-  Import took 0.084156 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000229 seconds.
-  path: Assets/Characters/Gear.png
-  artifactKey: Guid(3f3475cfa95d66c4f822af389f9dd2d3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Characters/Gear.png using Guid(3f3475cfa95d66c4f822af389f9dd2d3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ec77d758323a4e52f514672419bf95a2') in 0.035363 seconds
-  Import took 0.043413 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000196 seconds.
-  path: Assets/Characters/Snail/SnailSheet_0002_Frame 1.psd
-  artifactKey: Guid(f2ea61eda23c7674591ac4fa1742a8f1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Characters/Snail/SnailSheet_0002_Frame 1.psd using Guid(f2ea61eda23c7674591ac4fa1742a8f1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'efa3e15eb1406eccf29bed2a67696c6e') in 0.045890 seconds
-  Import took 0.049569 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000225 seconds.
-  path: Assets/Characters/Snail/Snail_0002_Frame 1.psd
-  artifactKey: Guid(169160105b9837f4b84705046fa53165) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Characters/Snail/Snail_0002_Frame 1.psd using Guid(169160105b9837f4b84705046fa53165) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a0ac7da18f4d13cff875e598b5b6425b') in 0.034243 seconds
-  Import took 0.037915 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000188 seconds.
-  path: Assets/Characters/BackgroundGame.png
-  artifactKey: Guid(257a011fba9584048a727a82c71df318) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Characters/BackgroundGame.png using Guid(257a011fba9584048a727a82c71df318) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b4804d6c408a677b2bb0057bc0c331fe') in 0.046682 seconds
-  Import took 0.051588 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000176 seconds.
-  path: Assets/Characters/Snail/Snail_0000_Frame 3.psd
-  artifactKey: Guid(e77dfd4a7dbc15b46b5046d06da6e58c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Characters/Snail/Snail_0000_Frame 3.psd using Guid(e77dfd4a7dbc15b46b5046d06da6e58c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f90378abb7930e08d79b227eec1c63ca') in 0.061310 seconds
-  Import took 0.068344 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000252 seconds.
-  path: Assets/Characters/Meteor/Meteor - copy_0001_Frame 1.psd
-  artifactKey: Guid(0c75649af3e87bc4cbe868b6821927b6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Characters/Meteor/Meteor - copy_0001_Frame 1.psd using Guid(0c75649af3e87bc4cbe868b6821927b6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '36ff1f890de6a60eed9bcb4e64b165c0') in 0.051620 seconds
-  Import took 0.063106 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000305 seconds.
-  path: Assets/Characters/Snail/SnailSheet_0001_Frame 2.psd
-  artifactKey: Guid(e4f753e2b2610104999890cff8160a2f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Characters/Snail/SnailSheet_0001_Frame 2.psd using Guid(e4f753e2b2610104999890cff8160a2f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd0652339c83c19de6b8777ca76068e0c') in 0.044464 seconds
-  Import took 0.049325 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 65.587452 seconds.
-  path: Assets/Rain of Stars Icon.png
-  artifactKey: Guid(700cb90e37eed0d4391ebd4ed1d9a9d3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Rain of Stars Icon.png using Guid(700cb90e37eed0d4391ebd4ed1d9a9d3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '72e5c7d54c1fbed315e42d726a93cef1') in 0.033571 seconds
-  Import took 0.038345 seconds .
-
-========================================================================
-Received Prepare
-Refreshing native plugins compatible for Editor in 1.94 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 53.8 MB.
-System memory in use after: 53.9 MB.
-
-Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 2330.
-Total: 51.012100 ms (FindLiveObjects: 0.378300 ms CreateObjectMapping: 0.045000 ms MarkObjects: 50.556400 ms  DeleteObjects: 0.030900 ms)
-
-========================================================================
-Received Prepare
-Refreshing native plugins compatible for Editor in 1.58 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 53.8 MB.
-System memory in use after: 53.9 MB.
-
-Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 2330.
-Total: 3.015500 ms (FindLiveObjects: 0.247500 ms CreateObjectMapping: 0.050600 ms MarkObjects: 2.696800 ms  DeleteObjects: 0.018400 ms)
+  path: Assets/Sounds/snail movement2.mp3
+  artifactKey: Guid(6895de2084e3159438232c2add72a927) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sounds/snail movement2.mp3 using Guid(6895de2084e3159438232c2add72a927) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd3073c81f2626f954ecf20a8e12622e9') in 0.030911 seconds
+  Import took 0.034943 seconds .
 
 AssetImportWorkerClient::OnTransportError - code=2 error=End of file

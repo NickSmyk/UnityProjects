@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4185201078015909410}
   - component: {fileID: 3482274437262246841}
   m_Layer: 0
-  m_Name: Falling downObject
+  m_Name: Meteor
   m_TagString: Untagged
   m_Icon: {fileID: 2800000, guid: 97f44a4b6e6e1b442afe3e9bd6755071, type: 3}
   m_NavMeshLayer: 0
@@ -29,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4185201078015909411}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.6505959, y: 5.4, z: 0}
+  m_LocalPosition: {x: 0.30620575, y: 5.4, z: 0}
   m_LocalScale: {x: 0.59752196, y: 0.62426317, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
